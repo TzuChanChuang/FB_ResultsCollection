@@ -2,11 +2,15 @@ from flask import Flask
 from flask import render_template
 app = Flask(__name__)
 
-#app.route("/")
+@app.route("/")
 def index():
 	return render_template('index.html')
-app.add_url_rule('/', None, index)
-
+@app.route("/publish/")
+def publish():
+	return render_template('publish.html')
+@app.route("/results/")
+def results():
+	return render_template('results.html')
 if __name__ == "__main__":
 	app.run()
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PublishQuestions</title>
+	<link href="../static/stylesheets/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	    	 <a class="navbar-brand" href="/" style="color: #dddddd;">Home</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    	<ul class="nav navbar-nav">
+				<li><a href="{{ url_for('publish')}}">Publish</a></li>
+				<li><a href="{{ url_for('results')}}">Results</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">
+					<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
+				</a></li>
+			</ul>
+	    </div>
+	  </div>
+	</nav>
+	<header class="jumbotron" id="overview">
+		<form class="form-horizontal" id="QuestionForm" style="text-align: left;">
+		  <div class="form-group"  style="width: 60%;">
+		    <input type="text" class="form-control" id="myQuestion" placeholder="Ask Your Questions Here" style= "height:45px;">
+		    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publish</button>
+		    
+		  </div>
+		</form>
+	</header>
+</body>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../static/javascripts/ass4.js"></script>
+<script src="../static/javascripts/bootstrap.js"></script>
+<script src="../static/javascripts/fblogin.js"></script>
+</html>
