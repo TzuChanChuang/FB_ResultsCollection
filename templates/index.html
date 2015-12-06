@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PublishQuestions</title>
+	<link href="../static/stylesheets/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	    	 <a class="navbar-brand" href="#" style="color: #dddddd;">Home</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    	<ul class="nav navbar-nav">
+				<li><a href="#/publish/">Publish</a></li>
+				<li><a href="#/results/">Results</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">
+					<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
+				</a></li>
+			</ul>
+	    </div>
+	  </div>
+	</nav>
+	<header class="jumbotron" id="overview">
+      	<div class="container subhead">
+		  	<div class="row">
+		  		<div class="col-md-12" id="space">
+		  			<h1 id="suggestion" style="text-align: center; color: white"></h1>
+		  		</div>
+		  		<div class="col-md-12" id="options">
+		  			<div class="col-md-6" id="publish">
+						<img src="{{ url_for('static', filename='images/ask2.png')}}" style="display: block; margin-left: auto; margin-right: auto;width: 30%; height: 30%">
+						<br>
+						<p style="color:white; text-align:center;">Ask to the crowd</p>
+					</div>
+					<div class="col-md-6" id="results">
+						<img src="{{ url_for('static', filename='images/out.png')}}" style="display: block; margin-left: auto; margin-right: auto; width: 27%; height: 27%">
+						<br>
+						<p style="color:white; text-align:center;">Results</p>
+					</div>
+		  		</div>
+		  	</div>
+		</div>
+    </header>
+</body>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../static/javascripts/ass4.js"></script>
+<script src="../static/javascripts/bootstrap.js"></script>
+<script src="../static/javascripts/fblogin.js"></script>
+</html>
