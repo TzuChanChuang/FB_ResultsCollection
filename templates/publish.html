@@ -8,7 +8,7 @@
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	    	 <a class="navbar-brand" href="/" style="color: #dddddd;">Home</a>
+	    	 <a class="navbar-brand" href="{{ url_for('index')}}" style="color: #dddddd;">Home</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    	<ul class="nav navbar-nav">
@@ -26,15 +26,13 @@
 	<header class="jumbotron" id="overview">
 		<form class="form-horizontal" id="QuestionForm" style="text-align: left;">
 		  <div class="form-group"  style="width: 60%;">
-		    <input type="text" class="form-control" id="myQuestion" placeholder="Ask Your Questions Here" style= "height:45px;">
-		    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publish</button>
-		    
+		    <input type="text" class="form-control" id="myQuestion" placeholder="Ask Your Questions Here" style= "height:45px;" onclick="checkLoginStateyo();">
 		  </div>
 		</form>
 	</header>
 </body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="../static/javascripts/ass4.js"></script>
+<script src="../static/javascripts/publish.js"></script>
 <script src="../static/javascripts/bootstrap.js"></script>
 <script src="../static/javascripts/fblogin.js"></script>
 </html>
