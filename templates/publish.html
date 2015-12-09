@@ -3,6 +3,9 @@
 <head>
 	<title>PublishQuestions</title>
 	<link href="../static/stylesheets/styles.css" rel="stylesheet" type="text/css">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../static/javascripts/fblogin.js"></script>
+	<script src="../static/javascripts/bootstrap.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -17,22 +20,39 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">
-					<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
+					<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true" onlogin="checkLoginState();" scope="publish_actions"></div>
 				</a></li>
 			</ul>
 	    </div>
 	  </div>
 	</nav>
 	<header class="jumbotron" id="overview">
-		<form class="form-horizontal" id="QuestionForm" style="text-align: left;">
 		  <div class="form-group"  style="width: 60%;">
-		    <input type="text" class="form-control" id="myQuestion" placeholder="Ask Your Questions Here" style= "height:45px;" onclick="checkLoginStateyo();">
+		    <input type="text" class="form-control" id="myQuestion" placeholder="Ask Your Questions Here" style= "height:45px;">
+		    <script type="text/javascript">
+		    	(function() {
+					$("#myQuestion").keypress(function(event){
+				      	if(event.keyCode == 13){
+				        	Ques = $("#myQuestion").val();
+				        	postQuestion();
+				        }	  
+				  	});
+				})();
+
+				function postQuestion() {
+				    FB.api('/v2.5/me/feed', 'post', {
+				      message:Ques       
+				    }, function(response){
+				     	if (!response || response.error) {
+				        alert('Error occured');
+				      } else {
+				      	alert('Post ID: ' + response.id);
+				        console.log('Post ID: ' + response.id);
+				      }
+				  });
+				}
+		    </script>
 		  </div>
-		</form>
 	</header>
 </body>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="../static/javascripts/publish.js"></script>
-<script src="../static/javascripts/bootstrap.js"></script>
-<script src="../static/javascripts/fblogin.js"></script>
 </html>
