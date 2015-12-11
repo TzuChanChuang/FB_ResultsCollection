@@ -71,4 +71,8 @@ function testAPI() {
   FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
   });
+  FB.api('/me/picture', function(response){ 
+    var img_url = response.data['url']; 
+    document.getElementById('photo').innerHTML = '<img src="'+ img_url + '" style="width: 80%; height: 80%; margin-top: 7px;">';
+  });
 }
