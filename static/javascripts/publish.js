@@ -1,30 +1,4 @@
 
-var sheetkey = '1K2v3VSv9xCrAmK5sTYFNwxE58DJ6K81xBRz6mYKsOeo';
-var url = 'https://spreadsheets.google.com/feeds/cells/'+ sheetkey +'/1/public/values?alt=json-in-script&callback=?';
-
-/*(function() {
-  alert('fuck');
-  $("#myQuestion").keypress(function(event){
-    if(event.keyCode == 13){
-      Ques = $("#myQuestion").val();
-      postQuestion();
-    }   
-  });
-})();*/
-
-/*function postQuestion() {
-  FB.api('/v2.5/me/feed', 'post', {
-    message:Ques       
-  }, function(response){
-    if (!response || response.error) {
-      alert('Error occured');
-    } else {
-      alert('Post ID: ' + response.id);
-      console.log('Post ID: ' + response.id);
-    }
-  });
-}*/
-
 jQuery( document ).ready(function( $ ) {
   // variable to hold request
   var request;

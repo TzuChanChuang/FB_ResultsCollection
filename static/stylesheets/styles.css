@@ -8107,3 +8107,9 @@ background: linear-gradient(to bottom, #0e0e0e 0%,#7d7e7d 100%); /* W3C, IE10+, 
   font-size: 18px;
   line-height: 1;
 }
+
+.borderexample
+{
+  border-style:solid;
+  border-color:#95CACA;
+} 
