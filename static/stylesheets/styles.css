@@ -8038,10 +8038,7 @@ button.close {
   margin-bottom: 0px;
   overflow: hidden;
   position: absolute;
-  background: #0e0e0e; /* Old browsers */
-background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, #0e0e0e 0%,#7d7e7d 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #0e0e0e 0%,#7d7e7d 100%); /* W3C, IE10+, FF16 Opera12+, Safari7+ */
+  background-image: url("../images/background.png");
   background-repeat: no-repeat;
   background-position: left top;
   background-size: cover;
@@ -8111,5 +8108,17 @@ background: linear-gradient(to bottom, #0e0e0e 0%,#7d7e7d 100%); /* W3C, IE10+, 
 .borderexample
 {
   border-style:solid;
+  background: #FFF5DB;
+  border: 5px solid;
   border-color:#95CACA;
+  height: 80px;
+} 
+
+.borderexample2
+{
+  border-style:solid;
+  background: #FFE7A3;
+  border: 5px solid;
+  border-color:#81C0C0;
+  height: 100px;
 } 

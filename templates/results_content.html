@@ -29,7 +29,77 @@
 	</nav>
 	<header class="jumbotron" id="overview">
 		<div class="content" id="content"></div>
-		<!--<script src="../static/javascripts/results_content.js"></script>-->
+		<script type="text/javascript">
+			total_comment = [];
+			function getcomments(){
+				FB.getLoginStatus(function(response) {
+					var dfd = $.Deferred();
+					FB.api('/' + "{{ques_id}}" + '?fields=from,message', function(response) {
+						console.log(response);
+						document.getElementById("content").innerHTML = document.getElementById("content").innerHTML + 
+						'<div class="borderexample2" style="margin-top:10px; width: 40%; margin:0px auto;" id= "po">' +
+						'<p style="font-size: 250%;">'+response.message +'</p></div>';
+						dfd.resolve();
+					});
+					$.when(dfd).done(function() {
+						FB.api('/' + "{{ques_id}}/likes", function(response) {
+				            document.getElementById("po").innerHTML = document.getElementById("po").innerHTML + 
+				            response.data.length +' likes';
+				        });
+				    });
+				    var dfd2 = $.Deferred(); 
+					FB.api(
+						'/'+"{{ques_id}}"+'/comments',
+						'GET',
+						{"fields":"message,likes.summary(total_count),from{name,picture{url}}"},
+						function(response) {
+						 	//console.log(response);
+							console.log(response.data);
+							var comments = response.data
+							for(var i=0; i<comments.length;i++){
+								total_comment.push({});
+							    total_comment[i].photo_url = comments[i].from.picture.data.url;
+							    total_comment[i].name = comments[i].from.name;
+							    total_comment[i].message = comments[i].message;
+							    total_comment[i].likes = comments[i].likes.data.length;
+							}
+							dfd2.resolve();
+						}
+					);
+					$.when(dfd2).done(function() {
+						console.log("hi");
+						sort();
+					});
+				});
+			}
+
+			function sort(){
+				console.log(total_comment);
+				total_comment.sort(function(a, b){return b.likes-a.likes});
+				for(var i=0; i<total_comment.length;i++){
+					document.getElementById("content").innerHTML = document.getElementById("content").innerHTML + 
+					'<div style="background-color:#FFF5DB; margin-top:10px; width: 40%; margin:0px auto;">' +
+					'<img src="' + total_comment[i].photo_url + '" style="margin-right :10px;">' +
+					total_comment[i].name + ': '+
+					total_comment[i].message +'<br>'+
+					total_comment[i].likes +' likes</div>';
+				}
+			}
+
+			window.fbAsyncInit = function() {
+			  FB.init({
+			    appId      : '414322182106501',
+			    cookie     : true,  // enable cookies to allow the server to access 
+			                        // the session
+			    xfbml      : true,  // parse social plugins on this page
+			    version    : 'v2.2' // use version 2.2
+			  });
+			   FB.getLoginStatus(function(response) {
+			   	testAPI();
+			   	getcomments();
+			  });
+			};
+		</script>
 	</header>
 </body>
 
